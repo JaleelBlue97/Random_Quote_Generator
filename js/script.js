@@ -1,19 +1,9 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
-
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-  Add the `citation` property to at least one object in the array.
-  Add the `year` property to at least one object in the array.
-  Use console.log() to log your array of quotes to the console.
-***/
+/*
+  Creates an array named quotes that hold objects that hold various quotes 
+  and the information around the quotes, such as source, citation and the 
+  year they were stated.
+ */
 
 var quotes = [
   {quote : "I am the Senate.", source : "Emperor Palpatine aka Darth Sidious",
@@ -30,17 +20,16 @@ var quotes = [
 ]
 
 
-/***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
-***/
-
-
+/*
+  Returns a random number between 0 and the given upperBound
+ */
 function getRandomNumber(upperBound){
   return Math.floor(Math.random() * upperBound);
 }
 
+/*
+ Returns a random quote object from the quotes array
+ */
 function getRandomQuote(){
   var random = getRandomNumber(quotes.length);
 
@@ -48,24 +37,20 @@ function getRandomQuote(){
 }
 
 
+/*
+ Returns a random string containing the name of a color
+ */
 
 function getRandomColor(){
   var colors = ['gold', 'red', 'blue', 'green', 'orange', 'purple'];
   return colors[getRandomNumber(colors.length)];
 }
 
-/***
-  Create the `printQuote` function to: 
-   - Call the `getRandomQuote` function and assign it to a variable.
-   - Create a variable for the HTML string and set it equal to an empty string.
-   - Use the HTML template in the instructions or the markup in the index.html file, AND 
-     the random quote vairable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don't forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
+/*
+  Creates a string of text formatted with html tags and class declarations 
+  from the properties within 
+  a quote object and adds it to the html document connect to this script
+ */
 
 function printQuote(){
   var quote = getRandomQuote();
@@ -74,6 +59,7 @@ function printQuote(){
   quoteToHtml += '<p class="quote">' + quote.quote + '</p>';
   quoteToHtml += '<p class="source">' + quote.source;
 
+  // The following properties are only added to quoteToHtml if they are present within the quote object
   if (quote.citation){
     quoteToHtml += '<span class="citation">' + quote.citation + '</span>';
   }
@@ -95,25 +81,19 @@ function printQuote(){
   quoteToHtml += '</p>';
 
 
-
+  // Adds quoteToHtml to the inner html of element that contains the id quote-box
   document.getElementById("quote-box").innerHTML = quoteToHtml;
-  document.getElementsByTagName('body')[0].style = 'background-color: ' + getRandomColor();
+  // Changes the background color of the body tag and button tag of the html 
+  var randomColor = getRandomColor();
+  document.getElementById('loadQuote').style = 'background-color: ' + randomColor;
+  document.getElementsByTagName('body')[0].style = 'background-color: ' + randomColor;
 }
 
 
-
+// calls printQuote() every thirty seconds
 setInterval(() => {
   printQuote();
 }, 30000);
 
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
-
+// Adds an on click event listener to an element with the loadQuote id
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
