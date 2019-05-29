@@ -17,16 +17,16 @@ project 1 - A Random Quote Generator
 
 var quotes = [
   {quote : "I am the Senate.", source : "Emperor Palpatine aka Darth Sidious",
-  citation : "Coruscant", year : "19BBY"},
+  citation : "Coruscant", year : "19BBY", tags : ['political', 'Fantasy']},
   {quote : "You must have chaos within you to birth to a dancing star.", source : "Friedrich Nietzsche",
-  citation : "Thus Spoke Zarathustra", year :  "1883"},
+  citation : "Thus Spoke Zarathustra", year :  "1883", tags : ['philosophy']},
   {quote : "Few of the birds Maester Aemon had returned as of yet. One found Stannis, though. One found Dragonstone, and a king who still cared."
     , source : "Samwell Tarly"
-  , citation : "A Storm of Swords", year : 2000 },
+  , citation : "A Storm of Swords", year : 2000 , tags : ['Adventure', 'Fantasy'] },
   { quote : "You should have gone for the head... \"snap\" ", source : "Thanos"
-   , citation : "Avengers: Infinity War", year : 2018},
+   , citation : "Avengers: Infinity War", year : 2018, tags : ['Movie', 'CGI', 'Sci-Fi']},
   {quote : "You can lead a horse to water but you can't make it drink", source : "unknown"
-  , citation : "Unknown", year : "12th century \"exact date unknown\""}
+  , citation : "Unknown", year : "12th century \"exact date unknown\"", tags : ['Proverb']}
 ]
 
 
@@ -79,6 +79,17 @@ function printQuote(){
   }
   if (quote.year){
     quoteToHtml += '<span class="year">' + quote.year + '</span>';
+  }
+
+  if (quote.tags && quote.tags.length > 0){
+    quoteToHtml += ' <span class="tags">';
+    for (var i = 0; i < quote.tags.length; i++){
+      quoteToHtml += quote.tags[i];
+      if (quote.tags.length > 1){
+        quoteToHtml += ", ";
+      }
+    }
+    quoteToHtml += '</span>';
   }
   
   quoteToHtml += '</p>';
