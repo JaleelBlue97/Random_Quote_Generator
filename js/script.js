@@ -15,6 +15,18 @@ project 1 - A Random Quote Generator
   Use console.log() to log your array of quotes to the console.
 ***/
 
+var quotes = [
+  {quote : "I am the Senate.", source : "Emperor Palpatine aka Darth Sidious",
+  citation : "Coruscant", year : "19BBY"},
+  {quote : "You must have chaos within you to birth to a dancing star.", source : "Friedrich Nietzsche",
+  citation : "Thus Spoke Zarathustra", year :  "1883"},
+  {quote : "Few of the birds Maester Aemon had returned as of yet. One found Stannis, though. One found Dragonstone, and a king who still cared."
+  , citation : "A Storm of Swords", year : 2000 },
+  { quote : "You should have gone for the head... \"snap\" ", 
+    citation : "Avengers: Infinity War", year : 2018},
+  {quote : "You can lead a horse to water but you can't make it drink",
+  citation : "Unknown", year : "12th century \"exact date unknown\""}
+]
 
 
 
