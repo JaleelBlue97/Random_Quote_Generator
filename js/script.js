@@ -22,13 +22,14 @@ var quotes = [
   citation : "Thus Spoke Zarathustra", year :  "1883"},
   {quote : "Few of the birds Maester Aemon had returned as of yet. One found Stannis, though. One found Dragonstone, and a king who still cared."
   , citation : "A Storm of Swords", year : 2000 },
-  { quote : "You should have gone for the head... \"snap\" ", 
-    citation : "Avengers: Infinity War", year : 2018},
-  {quote : "You can lead a horse to water but you can't make it drink",
-  citation : "Unknown", year : "12th century \"exact date unknown\""}
+  { quote : "You should have gone for the head... \"snap\" ", source : "Thanos"
+   , citation : "Avengers: Infinity War", year : 2018},
+  {quote : "You can lead a horse to water but you can't make it drink", source : "unknown"
+  , citation : "Unknown", year : "12th century \"exact date unknown\""}
 ]
 
 
+console.log(quotes);
 
 /***
   Create the `getRandomQuote` function to:
@@ -36,6 +37,11 @@ var quotes = [
    - Cse the random number to `return` a random quote object from the `quotes` array.
 ***/
 
+function getRandomQuote(){
+  var random = Math.floor(Math.random() * quotes.length) + 1; 
+
+  return quotes[random];
+}
 
 
 
