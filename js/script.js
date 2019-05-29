@@ -21,6 +21,7 @@ var quotes = [
   {quote : "You must have chaos within you to birth to a dancing star.", source : "Friedrich Nietzsche",
   citation : "Thus Spoke Zarathustra", year :  "1883"},
   {quote : "Few of the birds Maester Aemon had returned as of yet. One found Stannis, though. One found Dragonstone, and a king who still cared."
+    , source : "Samwell Tarly"
   , citation : "A Storm of Swords", year : 2000 },
   { quote : "You should have gone for the head... \"snap\" ", source : "Thanos"
    , citation : "Avengers: Infinity War", year : 2018},
@@ -29,21 +30,29 @@ var quotes = [
 ]
 
 
-console.log(quotes);
-
 /***
   Create the `getRandomQuote` function to:
    - Create a variable to store a random number 
    - Cse the random number to `return` a random quote object from the `quotes` array.
 ***/
 
+
+function getRandomNumber(upperBound){
+  return Math.floor(Math.random() * upperBound);
+}
+
 function getRandomQuote(){
-  var random = Math.floor(Math.random() * quotes.length) + 1; 
+  var random = getRandomNumber(quotes.length);
 
   return quotes[random];
 }
 
 
+
+function getRandomColor(){
+  var colors = ['gold', 'red', 'blue', 'green', 'orange', 'purple'];
+  return colors[getRandomNumber(colors.length)];
+}
 
 /***
   Create the `printQuote` function to: 
@@ -58,8 +67,33 @@ function getRandomQuote(){
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
 
+function printQuote(){
+  var quote = getRandomQuote();
+
+  var quoteToHtml = "";
+  quoteToHtml += '<p class="quote">' + quote.quote + '</p>';
+  quoteToHtml += '<p class="source">' + quote.source;
+
+  if (quote.citation){
+    quoteToHtml += '<span class="citation">' + quote.citation + '</span>';
+  }
+  if (quote.year){
+    quoteToHtml += '<span class="year">' + quote.year + '</span>';
+  }
+  
+  quoteToHtml += '</p>';
 
 
+
+  document.getElementById("quote-box").innerHTML = quoteToHtml;
+  document.getElementsByTagName('body')[0].style = 'background-color: ' + getRandomColor();
+}
+
+
+
+setInterval(() => {
+  printQuote();
+}, 30000);
 
 /***
   When the "Show another quote" button is clicked, the event listener 
